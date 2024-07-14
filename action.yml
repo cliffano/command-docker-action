@@ -1,0 +1,28 @@
+---
+name: 'Command Docker GitHub Action'
+description: |
+  A simple GitHub Action for running a shell command via a Docker container
+author: 'Cliffano Subagio'
+branding:
+  icon: 'arrow-right-circle'
+  color: 'white'
+inputs:
+  command:
+    description: |
+      Command to be executed via a Docker container
+    type: string
+    required: true
+  docker_image:
+    description: |
+      Docker image to be used for running the container
+    type: string
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - name: Execute shell command
+      using: docker
+      image: Dockerfile
+      env:
+        COMMAND: ${{ inputs.command }}
+        DOCKER_IMAGE: ${{ inputs.docker_image }}

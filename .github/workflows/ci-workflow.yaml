@@ -1,0 +1,14 @@
+---
+name: CI
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: make ci
+      - name: 'Execute uname -a via latest Ubuntu Docker container'
+        uses: cliffano/command-docker-action@main
+        with:
+          command: 'uname -a'
+          docker_image: 'ubuntu:latest'
