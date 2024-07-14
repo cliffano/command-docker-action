@@ -7,17 +7,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: make ci
-      - name: 'Execute uname -a via default Docker container'
+      - name: 'Execute cat /etc/*-release via default Docker container'
         uses: cliffano/command-docker-action@main
         with:
-          command: 'uname -a'
-      - name: 'Execute uname -a via Ubuntu 22.04 Docker container'
+          command: 'cat /etc/*-release'
+      - name: 'Execute cat /etc/*-release via Ubuntu 22.04 Docker container'
         uses: cliffano/command-docker-action@main
         with:
-          command: 'uname -a'
+          command: 'cat /etc/*-release'
           image: 'ubuntu:22.04'
-      - name: 'Execute uname -a via Rocky Linux 9.3 Docker container'
+      - name: 'Execute cat /etc/*-release via Rocky Linux 9.3 Docker container'
         uses: cliffano/command-docker-action@main
         with:
-          command: 'uname -a'
+          command: 'cat /etc/*-release'
           image: 'rockylinux:9.3'
