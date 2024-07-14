@@ -29,5 +29,5 @@ Configuration
 
 | Input | Type | Description | Required | Default | Example |
 |-------|------|-------------|----------|---------|---------|
-| command | string | Shell command to run in a loop, each run can access an item from the list via $ITEM | Yes | |  `uname -a` |
+| command | string | Shell command to be executed via a Docker container | Yes | |  `uname -a` |
 | docker_image | string | Comma and/or space-separated list of items, or custom delimiters | Yes | | `ubuntu:22.04` |
