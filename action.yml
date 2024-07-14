@@ -20,6 +20,7 @@ inputs:
 runs:
   using: docker
   image: Dockerfile
+  build-args: |
+    DOCKER_IMAGE=${{ inputs.docker_image }}
   env:
     COMMAND: ${{ inputs.command }}
-    DOCKER_IMAGE: ${{ inputs.docker_image }}
