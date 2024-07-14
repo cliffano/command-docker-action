@@ -18,11 +18,8 @@ inputs:
     type: string
     required: true
 runs:
-  using: 'composite'
-  steps:
-    - name: Execute shell command
-      using: docker
-      image: Dockerfile
-      env:
-        COMMAND: ${{ inputs.command }}
-        DOCKER_IMAGE: ${{ inputs.docker_image }}
+  using: docker
+  image: Dockerfile
+  env:
+    COMMAND: ${{ inputs.command }}
+    DOCKER_IMAGE: ${{ inputs.docker_image }}
