@@ -18,11 +18,11 @@ Looping through a space-separated list of items:
     jobs:
       build:
         steps:
-          - name: 'Execute uname -a via latest Ubuntu Docker container'
+          - name: 'Execute uname -a via Ubuntu 22.04 Docker container'
             uses: cliffano/command-docker-action@main
             with:
               command: 'uname -a'
-              docker_image: 'ubuntu:latest'
+              docker_image: 'ubuntu:22.04'
 
 Configuration
 -------------
@@ -30,4 +30,4 @@ Configuration
 | Input | Type | Description | Required | Default | Example |
 |-------|------|-------------|----------|---------|---------|
 | command | string | Shell command to run in a loop, each run can access an item from the list via $ITEM | Yes | |  `uname -a` |
-| docker_image | string | Comma and/or space-separated list of items, or custom delimiters | Yes | | `ubuntu:latest` |
+| docker_image | string | Comma and/or space-separated list of items, or custom delimiters | Yes | | `ubuntu:22.04` |

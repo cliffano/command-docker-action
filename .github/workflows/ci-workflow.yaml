@@ -3,12 +3,12 @@ name: CI
 on: [push, pull_request]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
       - run: make ci
-      - name: 'Execute uname -a via latest Ubuntu Docker container'
+      - name: 'Execute uname -a via 22.04 Ubuntu Docker container'
         uses: cliffano/command-docker-action@main
         with:
           command: 'uname -a'
-          docker_image: 'ubuntu:latest'
+          docker_image: 'ubuntu:22.04'
