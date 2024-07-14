@@ -2,5 +2,7 @@
 set -o errexit
 set -o nounset
 
-echo "Executing command: $COMMAND"
+COMMAND="${1}"
+
+echo "Executing command: ${COMMAND}"
 ${!COMMAND}

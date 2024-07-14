@@ -22,5 +22,5 @@ runs:
   image: Dockerfile
   build-args: |
     DOCKER_IMAGE=${{ inputs.docker_image }}
-  env:
-    COMMAND: ${{ inputs.command }}
+  args:
+    - ${{ inputs.command }}
