@@ -6,9 +6,7 @@
 Command Docker GitHub Action
 ----------------------------
 
-A simple GitHub Action for running a shell command in a loop against a list of items.
-
-The items are comma and/or space-separated strings. Each item can be referenced in the command using `$ITEM`.
+A simple GitHub Action for running a shell command via a Docker container.
 
 Usage
 -----
@@ -22,12 +20,12 @@ Looping through a space-separated list of items:
             uses: cliffano/command-docker-action@main
             with:
               command: 'uname -a'
-              docker_image: 'ubuntu:22.04'
+              image: 'ubuntu:22.04'
 
 Configuration
 -------------
 
 | Input | Type | Description | Required | Default | Example |
 |-------|------|-------------|----------|---------|---------|
-| command | string | Shell command to be executed via a Docker container | Yes | |  `uname -a` |
-| docker_image | string | Comma and/or space-separated list of items, or custom delimiters | Yes | | `ubuntu:22.04` |
+| command | string | Shell command to be executed via a Docker container | Yes | - |  `uname -a` |
+| image | string | Docker image to be used for running the container | No | `alpine:3.20` | `ubuntu:22.04` |

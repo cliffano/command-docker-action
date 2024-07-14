@@ -7,8 +7,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: make ci
-      - name: 'Execute uname -a via 22.04 Ubuntu Docker container'
+      - name: 'Execute uname -a via default Docker container'
         uses: cliffano/command-docker-action@main
         with:
           command: 'uname -a'
-          docker_image: 'ubuntu:22.04'
+      - name: 'Execute uname -a via Ubuntu 22.04 Docker container'
+        uses: cliffano/command-docker-action@main
+        with:
+          command: 'uname -a'
+          image: 'ubuntu:22.04'
+      - name: 'Execute uname -a via Rocky Linux 9.3 Docker container'
+        uses: cliffano/command-docker-action@main
+        with:
+          command: 'uname -a'
+          image: 'rockylinux:9.3'

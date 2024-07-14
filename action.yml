@@ -12,14 +12,15 @@ inputs:
       Shell command to be executed via a Docker container
     type: string
     required: true
-  docker_image:
+  image:
     description: |
       Docker image to be used for running the container
     type: string
-    required: true
+    required: false
+    default: 'alpine:3.20'
 runs:
   using: docker
   image: Dockerfile
   args:
-    - ${{ inputs.docker_image }}
+    - ${{ inputs.image }}
     - ${{ inputs.command }}
