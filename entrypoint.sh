@@ -1,8 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/sh
 set -o errexit
 set -o nounset
 
 COMMAND="${1}"
 
 echo "Executing command: ${COMMAND}"
-${!COMMAND}
+sh -c "${COMMAND}"
