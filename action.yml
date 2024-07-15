@@ -23,9 +23,11 @@ runs:
   steps:
     - name: Build Docker image
       shell: bash
+      # yamllint disable-line rule:line-length
       run: |
         docker build -f Dockerfile --build-arg IMAGE=${{ inputs.image }} -t local_image:8.8.8 .
     - name: Run Docker container
       shell: bash
+      # yamllint disable-line rule:line-length
       run: |
         docker run --workdir "${PWD/"$GITHUB_WORKSPACE"/"/github/workspace"}" --rm -v "/var/run/docker.sock":"/var/run/docker.sock" --name local_container local_image:8.8.8 ${{ inputs.command }}
