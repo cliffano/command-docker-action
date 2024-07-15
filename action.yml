@@ -21,10 +21,11 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Verify
+    - name: Build Docker image
       shell: bash
-      run: ls -al
+      run: |
+        docker build -f Dockerfile --build-arg IMAGE=${{ inputs.image }} -t local_image:8.8.8 .
     - name: Run Docker container
       shell: bash
       run: |
-        docker run --rm -v /var/run/docker.sock:/var/run/docker.sock --entrypoint "${{ inputs.command }}" --name local_container "${{ inputs.image }}"
+        docker run --rm -v "/var/run/docker.sock":"/var/run/docker.sock" --name local_container local_image:8.8.8 "${{ inputs.command }}"
