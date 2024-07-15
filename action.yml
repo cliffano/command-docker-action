@@ -22,10 +22,10 @@ runs:
   using: 'composite'
   steps:
     - name: Build Docker image
-      shell: sh
+      shell: bash
       run: |
         docker build -f Dockerfile --build-arg IMAGE=${{ inputs.image }} -t local_image:8.8.8 .
     - name: Run Docker container
-      shell: sh
+      shell: bash
       run: |
-        docker run --workdir "${PWD/"$GITHUB_WORKSPACE"/"/github/workspace"}" --rm -v "/var/run/docker.sock":"/var/run/docker.sock" --name local_container local_image:8.8.8 "${{ inputs.command }}"
+        docker run --rm -v "/var/run/docker.sock":"/var/run/docker.sock" --name local_container local_image:8.8.8 "${{ inputs.command }}"
