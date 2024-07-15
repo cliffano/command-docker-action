@@ -19,8 +19,11 @@ inputs:
     required: false
     default: 'alpine:3.20'
 runs:
-  using: docker
-  image: Dockerfile
-  args:
-    - ${{ inputs.image }}
-    - ${{ inputs.command }}
+  using: 'composite'
+  steps:
+    - name: Build Docker image
+      run: |
+        docker build -f Dockerfile --build-arg IMAGE=${{ inputs.image }} -t local_image:8.8.8 .
+    - name: Run Docker container
+      run: |
+        docker run --workdir "${PWD/"$GITHUB_WORKSPACE"/"/github/workspace"}" --rm -v "/var/run/docker.sock":"/var/run/docker.sock" --name local_container local_image:8.8.8 ${{ inputs.command }}
