@@ -28,4 +28,4 @@ runs:
     - name: Run Docker container
       shell: bash
       run: |
-        docker run --rm -v "/var/run/docker.sock":"/var/run/docker.sock" --name local_container local_image:8.8.8 "${{ inputs.command }}"
+        docker run --rm -v "/var/run/docker.sock":"/var/run/docker.sock" -v ./entrypoint.sh:entrypoint.sh --name local_container local_image:8.8.8 "${{ inputs.command }}"
