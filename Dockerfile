@@ -1,5 +1,5 @@
 ARG IMAGE=alpine:3.20
-ARG SHELL=sh
 FROM ${IMAGE}
+ARG SHELL=sh
 COPY entrypoint-${SHELL}.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
