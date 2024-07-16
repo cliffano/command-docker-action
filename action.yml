@@ -30,7 +30,7 @@ runs:
     - name: Build Docker image
       shell: sh
       run: |
-        docker build -f Dockerfile --build-arg IMAGE=${{ inputs.image }} --build-arg SHELL=${{ inputs.shell }} -t local_image:8.8.8 .
+        cd $GITHUB_ACTION_PATH && docker build -f Dockerfile --build-arg IMAGE=${{ inputs.image }} --build-arg SHELL=${{ inputs.shell }} -t local_image:8.8.8 .
     - name: Run Docker container
       shell: sh
       run: |
