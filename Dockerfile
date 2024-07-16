@@ -1,7 +1,5 @@
 ARG IMAGE=alpine:3.20
+ARG SHELL=sh
 FROM ${IMAGE}
-COPY entrypoint.sh /entrypoint.sh
-RUN ls -al
-RUN pwd
-RUN ls -al /entrypoint.sh
+COPY entrypoint-${SHELL}.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

@@ -18,14 +18,20 @@ inputs:
     type: string
     required: false
     default: 'alpine:3.20'
+  shell:
+    description: |
+      Shell to be used for running the command
+    type: string
+    required: false
+    default: 'sh'
 runs:
   using: 'composite'
   steps:
     - name: Build Docker image
-      shell: bash
+      shell: sh
       run: |
-        docker build -f Dockerfile --build-arg IMAGE=${{ inputs.image }} -t local_image:8.8.8 .
+        docker build -f Dockerfile --build-arg IMAGE=${{ inputs.image }} --build-arg SHELL=${{ inputs.shell }} -t local_image:8.8.8 .
     - name: Run Docker container
-      shell: bash
+      shell: sh
       run: |
         docker run --rm -v /var/run/docker.sock:/var/run/docker.sock --name local_container local_image:8.8.8 "${{ inputs.command }}"
