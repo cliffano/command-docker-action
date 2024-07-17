@@ -7,16 +7,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: make ci
+      - name: 'Execute cat /etc/*-release using default sh shell via default Docker container'
+        uses: cliffano/command-docker-action@main
+        with:
+          command: 'cat /etc/*-release'
       - name: 'Execute cat /etc/*-release using bash shell via Ubuntu 22.04 Docker container'
         uses: cliffano/command-docker-action@main
         with:
           command: 'cat /etc/*-release'
           image: ubuntu:22.04
           shell: bash
-      - name: 'Execute cat /etc/*-release using default sh shell via default Docker container'
-        uses: cliffano/command-docker-action@main
-        with:
-          command: 'cat /etc/*-release'
       - name: 'Execute cat /etc/*-release using bash shell via Rocky Linux 9.3 Docker container'
         uses: cliffano/command-docker-action@main
         with:
