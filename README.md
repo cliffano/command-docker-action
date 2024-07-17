@@ -1,6 +1,7 @@
 <img align="right" src="https://raw.github.com/cliffano/command-docker-action/master/avatar.jpg" alt="Avatar"/>
 
 [![Build Status](https://github.com/cliffano/command-docker-action/workflows/CI/badge.svg)](https://github.com/cliffano/command-docker-action/actions?query=workflow%3ACI)
+[![Security Status](https://snyk.io/test/github/cliffano/command-docker-action/badge.svg)](https://snyk.io/test/github/cliffano/command-docker-action)
 <br/>
 
 Command Docker GitHub Action
