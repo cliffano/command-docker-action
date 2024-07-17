@@ -34,4 +34,4 @@ runs:
     - name: Run Docker container
       shell: sh
       run: |
-        docker run --rm -v /var/run/docker.sock:/var/run/docker.sock --name local_container local_image:8.8.8 "${{ inputs.command }}"
+        cd $GITHUB_WORKSPACE && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock --name local_container local_image:8.8.8 "${{ inputs.command }}"
