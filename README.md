@@ -8,6 +8,8 @@ Command Docker GitHub Action
 
 A simple GitHub Action for running a shell command via a Docker container.
 
+The command will be executed on a directory containing the GitHub repository content.
+
 Usage
 -----
 
@@ -40,4 +42,4 @@ Configuration
 |-------|------|-------------|----------|---------|---------|
 | command | string | Shell command to be executed via a Docker container | Yes | - |  `cat /etc/*-release` |
 | image | string | Docker image to be used for running the container | No | `alpine:3.20` | `ubuntu:22.04` |
-| shell | string | Shell to be used for running the command | No | `sh` | `bash` |
+| shell | string | Shell to be used for running the command | No | `sh` | `sh`, `bash` |
