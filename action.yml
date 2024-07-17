@@ -27,11 +27,11 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Build Docker image
+    - name: Build Docker image on the the GitHub Action directory
       shell: sh
       run: |
         cd $GITHUB_ACTION_PATH && docker build -f Dockerfile --build-arg IMAGE=${{ inputs.image }} --build-arg SHELL=${{ inputs.shell }} -t local_image:8.8.8 .
-    - name: Run Docker container
+    - name: Run Docker container on the GitHub Workspace directory
       shell: sh
       run: |
         cd $GITHUB_WORKSPACE && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/opt/workspace/ --name local_container local_image:8.8.8 "${{ inputs.command }}"
