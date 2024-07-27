@@ -34,4 +34,4 @@ runs:
     - name: Run Docker container on the GitHub Workspace directory
       shell: sh
       run: |
-        cd $GITHUB_WORKSPACE && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/opt/workspace/ --name local_container local_image:8.8.8 "${{ inputs.command }}"
+        cd $GITHUB_WORKSPACE && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/opt/workspace/ --env-file <(env) --name local_container local_image:8.8.8 "${{ inputs.command }}"

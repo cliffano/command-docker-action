@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- Add environment variables passing from host to running container
+
 ## 1.0.0 - 2024-07-18
 ### Added
 - Initial version
