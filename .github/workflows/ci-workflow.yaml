@@ -23,3 +23,8 @@ jobs:
           command: 'cat /etc/*-release'
           image: rockylinux:9.3
           shell: bash
+      - name: 'Display environment variables'
+        uses: cliffano/command-docker-action@main
+        with:
+          command: 'echo GITHUB_WORKSPACE: $GITHUB_WORKSPACE, GITHUB_RUN_ID: $GITHUB_RUN_ID'
+          env_vars: 'GITHUB_WORKSPACE,GITHUB_RUN_ID'

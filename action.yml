@@ -24,6 +24,12 @@ inputs:
     type: string
     required: false
     default: 'sh'
+  env_vars:
+    description: |
+      Comma separated environment variable names to be passed to Docker container
+    type: string
+    required: false
+    default: ''
 runs:
   using: 'composite'
   steps:
@@ -31,7 +37,11 @@ runs:
       shell: sh
       run: |
         cd $GITHUB_ACTION_PATH && docker build -f Dockerfile --build-arg IMAGE=${{ inputs.image }} --build-arg SHELL=${{ inputs.shell }} -t local_image:8.8.8 .
+    - name: Create .env file from environment variables to be consumed by Docker container
+      uses: CallePuzzle/envvar-to-dotenv-action@0.1.0
+      with:
+        variableNames: ${{ inputs.env_vars }}
     - name: Run Docker container on the GitHub Workspace directory
       shell: sh
       run: |
-        cd $GITHUB_WORKSPACE && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/opt/workspace/ $(env | cut -f1 -d= | sed 's/^/-e /') --name local_container local_image:8.8.8 "${{ inputs.command }}"
+        cd $GITHUB_WORKSPACE && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/opt/workspace/ --env-file .env --name local_container local_image:8.8.8 "${{ inputs.command }}"

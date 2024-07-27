@@ -35,6 +35,11 @@ Looping through a space-separated list of items:
               command: 'cat /etc/*-release'
               image: rockylinux:9.3
               shell: bash
+          - name: 'Display environment variables'
+            uses: cliffano/command-docker-action@main
+            with:
+              command: 'echo GITHUB_WORKSPACE: $GITHUB_WORKSPACE, GITHUB_RUN_ID: $GITHUB_RUN_ID'
+              env_vars: 'GITHUB_WORKSPACE,GITHUB_RUN_ID'
 
 Configuration
 -------------
@@ -44,3 +49,4 @@ Configuration
 | command | string | Shell command to be executed via a Docker container | Yes | - |  `cat /etc/*-release` |
 | image | string | Docker image to be used for running the container | No | `alpine:3.20` | `ubuntu:22.04` |
 | shell | string | Shell to be used for running the command | No | `sh` | `sh`, `bash` |
+| env_vars | string | Comma separated environment variable names to be passed to Docker container | No | `GITHUB_WORKSPACE,GITHUB_RUN_ID` | `` |
