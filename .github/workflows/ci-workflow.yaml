@@ -23,11 +23,6 @@ jobs:
           command: 'cat /etc/*-release'
           image: rockylinux:9.3
           shell: bash
-      - uses: TickX/var-to-dotenv@v1.1.1
-        with:
-          key: 'SOME_ENV_VAR'
-          value: 'Some value'
-          envPath: '/tmp/.env'
       - uses: iamsauravsharma/create-dotenv@v2.0.1
         with:
           file-path: '/tmp/.env'
