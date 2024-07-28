@@ -41,11 +41,11 @@ Run command using environment variables passed via env file:
     jobs:
       build:
         steps:
-          - uses: TickX/var-to-dotenv@v1.1.1
+          - uses: iamsauravsharma/create-dotenv@v2.0.1
             with:
-              key: 'SOME_ENV_VAR'
-              value: 'Some value
-              envPath: '/tmp/.env'
+              file-path: '/tmp/.env'
+            env:
+              SOME_ENV_VAR: 'Some value'
           - name: 'Display environment variables'
             uses: cliffano/command-docker-action@main
             with:

@@ -28,6 +28,11 @@ jobs:
           key: 'SOME_ENV_VAR'
           value: 'Some value'
           envPath: '/tmp/.env'
+      - uses: iamsauravsharma/create-dotenv@v2.0.1
+        with:
+          file-path: '/tmp/.env'
+        env:
+          SOME_ENV_VAR: 'Some value'
       - name: 'Display environment variables'
         uses: cliffano/command-docker-action@main
         with:
