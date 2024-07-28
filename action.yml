@@ -37,7 +37,16 @@ runs:
       shell: sh
       run: |
         cd $GITHUB_ACTION_PATH && docker build -f Dockerfile --build-arg IMAGE=${{ inputs.image }} --build-arg SHELL=${{ inputs.shell }} -t local_image:8.8.8 .
+    - name: Deploy on pushes
+
+      run: echo 'DEPLOY=true' >> "$GITHUB_ENV"
     - name: Run Docker container on the GitHub Workspace directory
+      if: inputs.env_file == ''
       shell: sh
       run: |
-        cd $GITHUB_WORKSPACE && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/opt/workspace/ ${{ inputs.env_file != '' && '--env-file' }} "${{ inputs.env_file }}" --name local_container local_image:8.8.8 "${{ inputs.command }}"
+        cd $GITHUB_WORKSPACE && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/opt/workspace/ --name local_container local_image:8.8.8 "${{ inputs.command }}"
+    - name: Run Docker container on the GitHub Workspace directory with env file
+      if: inputs.env_file != ''
+      shell: sh
+      run: |
+        cd $GITHUB_WORKSPACE && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/opt/workspace/ --env-file "${{ inputs.env_file }}" --name local_container local_image:8.8.8 "${{ inputs.command }}"
