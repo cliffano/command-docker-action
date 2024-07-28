@@ -23,8 +23,13 @@ jobs:
           command: 'cat /etc/*-release'
           image: rockylinux:9.3
           shell: bash
+      - uses: TickX/var-to-dotenv@v1.1.1
+        with:
+          key: 'SOME_ENV_VAR'
+          value: 'Some value
+          envPath: '/tmp/.env'
       - name: 'Display environment variables'
         uses: cliffano/command-docker-action@main
         with:
-          command: 'echo GITHUB_WORKSPACE: $GITHUB_WORKSPACE, GITHUB_RUN_ID: $GITHUB_RUN_ID'
-          env_vars: 'GITHUB_WORKSPACE,GITHUB_RUN_ID'
+          command: 'echo "SOME_ENV_VAR: $SOME_ENV_VAR"'
+          env_file: '/tmp/.env'

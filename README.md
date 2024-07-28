@@ -14,7 +14,7 @@ The command will be executed on a directory containing the GitHub repository con
 Usage
 -----
 
-Looping through a space-separated list of items:
+Run commands across Docker containers with different images and shells:
 
     jobs:
       build:
@@ -35,11 +35,22 @@ Looping through a space-separated list of items:
               command: 'cat /etc/*-release'
               image: rockylinux:9.3
               shell: bash
+
+Run command using environment variables passed via env file:
+
+    jobs:
+      build:
+        steps:
+          - uses: TickX/var-to-dotenv@v1.1.1
+            with:
+              key: 'SOME_ENV_VAR'
+              value: 'Some value
+              envPath: '/tmp/.env'
           - name: 'Display environment variables'
             uses: cliffano/command-docker-action@main
             with:
-              command: 'echo GITHUB_WORKSPACE: $GITHUB_WORKSPACE, GITHUB_RUN_ID: $GITHUB_RUN_ID'
-              env_vars: 'GITHUB_WORKSPACE,GITHUB_RUN_ID'
+              command: 'echo "SOME_ENV_VAR: $SOME_ENV_VAR"'
+              env_file: '/tmp/.env'
 
 Configuration
 -------------
@@ -49,4 +60,4 @@ Configuration
 | command | string | Shell command to be executed via a Docker container | Yes | - |  `cat /etc/*-release` |
 | image | string | Docker image to be used for running the container | No | `alpine:3.20` | `ubuntu:22.04` |
 | shell | string | Shell to be used for running the command | No | `sh` | `sh`, `bash` |
-| env_vars | string | Comma separated environment variable names to be passed to Docker container | No | `GITHUB_WORKSPACE,GITHUB_RUN_ID` | `` |
+| env_file | string | Path to env file containing environment variables  made available during shell command execution | No | `` | `/tmp/.env` |
