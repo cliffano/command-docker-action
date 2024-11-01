@@ -36,7 +36,7 @@ jobs:
       - name: 'Display PATH environment variable'
         uses: cliffano/command-docker-action@main
         with:
-          command: "echo ${{ '$PATH' }}"
+          command: 'echo `\$\{\{PATH\}\}`'
           image: ubuntu:22.04
           shell: bash
           extra_path: '/some/path:/opt/workspace/bin'
