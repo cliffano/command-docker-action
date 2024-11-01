@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- Add path input configuration
+
 ## 1.2.0 - 2024-11-01
 ### Added
 - Add PATH logging to the entrypoint script

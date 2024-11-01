@@ -33,3 +33,10 @@ jobs:
         with:
           command: 'echo "SOME_ENV_VAR: $SOME_ENV_VAR"'
           env_file: '/tmp/.env'
+      - name: 'Display PATH environment variable'
+        uses: cliffano/command-docker-action@main
+        with:
+          command: 'echo "$PATH"'
+          image: ubuntu:22.04
+          shell: bash
+          path: '/some/path:/opt/workspace/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'

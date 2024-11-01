@@ -59,5 +59,6 @@ Configuration
 |-------|------|-------------|----------|---------|---------|
 | command | string | Shell command to be executed via a Docker container | Yes | - |  `cat /etc/*-release` |
 | image | string | Docker image to be used for running the container | No | `alpine:3.20` | `ubuntu:22.04` |
-| shell | string | Shell to be used for running the command | No | `sh` | `sh`, `bash` |
+| path | string | Shell to be used for running the command | No | `/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin` | `/some/path:/opt/workspace/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin` |
+| shell | string | PATH environment variable to be set during shell command execution | No | `sh` | `sh`, `bash` |
 | env_file | string | Path to env file containing environment variables  made available during shell command execution | No | `` | `/tmp/.env` |
