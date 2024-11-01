@@ -39,4 +39,4 @@ jobs:
           command: 'echo "$PATH"'
           image: ubuntu:22.04
           shell: bash
-          path: '/some/path:/opt/workspace/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+          extra_path: '/some/path:/opt/workspace/bin'

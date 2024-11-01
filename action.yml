@@ -24,15 +24,15 @@ inputs:
     type: string
     required: false
     default: 'sh'
-  path:
+  extra_path:
     description: |
-      PATH environment variable to be set during shell command execution
+      Extra PATH environment variable to be added to original PATH during shell command execution
     type: string
     required: false
-    default: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    default: ''
   env_file:
     description: |
-      Path to env file containing environment variables  made available during shell command execution
+      Path to env file containing environment variables made available during shell command execution
     type: string
     required: false
     default: ''
@@ -42,7 +42,7 @@ runs:
     - name: Build Docker image on the the GitHub Action directory
       shell: sh
       run: |
-        cd $GITHUB_ACTION_PATH && docker build -f Dockerfile --build-arg IMAGE=${{ inputs.image }} --build-arg PATH=${{ inputs.path }} --build-arg SHELL=${{ inputs.shell }} -t local_image:8.8.8 .
+        cd $GITHUB_ACTION_PATH && docker build -f Dockerfile --build-arg IMAGE=${{ inputs.image }} --build-arg SHELL=${{ inputs.shell }} -t local_image:8.8.8 .
     - name: Run Docker container on the GitHub Workspace directory
       if: inputs.env_file == ''
       shell: sh
@@ -52,4 +52,4 @@ runs:
       if: inputs.env_file != ''
       shell: sh
       run: |
-        cd $GITHUB_WORKSPACE && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/opt/workspace/ --env-file "${{ inputs.env_file }}" --name local_container local_image:8.8.8 "${{ inputs.command }}"
+        cd $GITHUB_WORKSPACE && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/opt/workspace/ --env-file "${{ inputs.env_file }}" --name local_container local_image:8.8.8 "${{ inputs.command }}" "${{ inputs.extra_path }}"

@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 ### Added
-- Add path input configuration
+- Add extra_path input configuration
 
 ## 1.2.0 - 2024-11-01
 ### Added
