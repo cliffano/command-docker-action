@@ -52,6 +52,17 @@ Run command using environment variables passed via env file:
               command: 'echo "SOME_ENV_VAR: $SOME_ENV_VAR"'
               env_file: '/tmp/.env'
 
+Run command with extra PATH environment variable:
+
+    jobs:
+      build:
+        steps:
+          - name: 'Run custom command from a custom path specified in extra_path'
+            uses: cliffano/command-docker-action@main
+            with:
+              command: 'mkdir -p /opt/workspace/bin/ && touch /opt/workspace/bin/some-exec && chmod +x /opt/workspace/bin/some-exec && which some-exec'
+              extra_path: '/some/path:/opt/workspace/bin'
+
 Configuration
 -------------
 
