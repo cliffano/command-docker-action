@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- Add PATH logging to the entrypoint script
+
 ## 1.1.0 - 2024-08-17
 ### Added
 - Add environment file support for using environment variables within the shell command
