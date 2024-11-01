@@ -33,7 +33,7 @@ jobs:
         with:
           command: 'echo "SOME_ENV_VAR: $SOME_ENV_VAR"'
           env_file: '/tmp/.env'
-      - name: 'Display PATH environment variable'
+      - name: 'Verify extra path is added to original PATH by checking custom command some-exec'
         uses: cliffano/command-docker-action@main
         with:
           command: 'mkdir -p /opt/workspace/bin/ && touch /opt/workspace/bin/some-exec && chmod +x /opt/workspace/bin/some-exec && which some-exec'
