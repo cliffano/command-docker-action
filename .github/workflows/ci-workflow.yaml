@@ -36,7 +36,7 @@ jobs:
       - name: 'Display PATH environment variable'
         uses: cliffano/command-docker-action@main
         with:
-          command: "xpath=${{ '\${{PATH}}' }} && echo $xpath"
+          command: 'touch /opt/workspace/bin/some-exec && chmod +x /opt/workspace/bin/some-exec && which some-exec'
           image: ubuntu:22.04
           shell: bash
           extra_path: '/some/path:/opt/workspace/bin'
