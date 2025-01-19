@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+- Pin workflows ubuntu to 24.04
+
 ## 1.3.0 - 2024-11-01
 ### Added
 - Add extra_path input configuration
