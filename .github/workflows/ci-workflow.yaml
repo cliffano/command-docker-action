@@ -6,6 +6,8 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+        with:
+          set-safe-directory: ${{ github.workspace }}
       - run: make ci
       - name: 'Execute cat /etc/*-release using default sh shell via default Docker container'
         uses: cliffano/command-docker-action@main

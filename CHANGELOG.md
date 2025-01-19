@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- Add checkout safe directory
+
 ### Changed
 - Pin workflows ubuntu to 24.04
 
