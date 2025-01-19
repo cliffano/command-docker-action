@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Pin workflows ubuntu to 24.04
+- Upgrade release-action to 1.1.0
 
 ## 1.3.0 - 2024-11-01
 ### Added
