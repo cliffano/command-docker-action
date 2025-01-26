@@ -73,3 +73,11 @@ Configuration
 | extra_path | string | Extra PATH environment variable to be added to original PATH during shell command execution | No | `` | `/some/path:/opt/workspace/bin` |
 | shell | string | Shell to be used for running the command | No | `sh` | `sh`, `bash` |
 | env_file | string | Path to env file containing environment variables  made available during shell command execution | No | `` | `/tmp/.env` |
+
+FAQ
+---
+
+Q: Why does the command that should work on my container image result in a not found error or `No such file or directory`?
+
+A: This is because GitHub Actions overwrites the default PATH. E.g. `/snap/bin:/home/runner/.local/bin:/opt/pipx_bin:/home/runner/.cargo/bin:/home/runner/.config/composer/vendor/bin:/usr/local/.ghcup/bin:/home/runner/.dotnet/tools:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin` as of January 2025.
+   The solution to this problem is to use the `extra_path` input parameter to add the required path for your command to the PATH environment variable.
