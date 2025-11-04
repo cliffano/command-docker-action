@@ -69,7 +69,7 @@ Configuration
 | Input | Type | Description | Required | Default | Example |
 |-------|------|-------------|----------|---------|---------|
 | command | string | Shell command to be executed via a Docker container | Yes | - |  `cat /etc/*-release` |
-| image | string | Docker image to be used for running the container | No | `alpine:3.20` | `ubuntu:24.04` |
+| image | string | Docker image to be used for running the container | No | `alpine:3.22` | `ubuntu:24.04` |
 | extra_path | string | Extra PATH environment variable to be added to original PATH during shell command execution | No | `` | `/some/path:/opt/workspace/bin` |
 | shell | string | Shell to be used for running the command | No | `sh` | `sh`, `bash` |
 | env_file | string | Path to env file containing environment variables  made available during shell command execution | No | `` | `/tmp/.env` |
