@@ -1,4 +1,4 @@
-version ?= 1.3.1-pre.0
+version ?= 1.4.0
 
 ci: deps lint
 
