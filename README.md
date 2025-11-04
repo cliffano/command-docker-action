@@ -41,7 +41,7 @@ Run command using environment variables passed via env file:
     jobs:
       build:
         steps:
-          - uses: iamsauravsharma/create-dotenv@v2.0.1
+          - uses: iamsauravsharma/create-dotenv@v4.0.0
             with:
               file-path: '/tmp/.env'
             env:
