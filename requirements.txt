@@ -1,1 +1,2 @@
+actionlint-py==1.7.12.24
 yamllint==1.37.1

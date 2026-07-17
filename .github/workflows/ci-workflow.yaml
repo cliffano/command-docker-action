@@ -1,42 +1,15 @@
 ---
 name: CI
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           set-safe-directory: ${{ github.workspace }}
-      - run: make ci
-      - name: 'Execute cat /etc/*-release using default sh shell via default Docker container'
-        uses: cliffano/command-docker-action@main
+      - uses: cliffano/command-docker-action@v1.4.0
         with:
-          command: 'cat /etc/*-release'
-      - name: 'Execute cat /etc/*-release using bash shell via Ubuntu 24.04 Docker container'
-        uses: cliffano/command-docker-action@main
-        with:
-          command: 'cat /etc/*-release'
-          image: ubuntu:24.04
+          command: 'make deps ci'
+          image: cliffano/studio
           shell: bash
-      - name: 'Execute cat /etc/*-release using bash shell via Rocky Linux 9.3 Docker container'
-        uses: cliffano/command-docker-action@main
-        with:
-          command: 'cat /etc/*-release'
-          image: rockylinux:9.3
-          shell: bash
-      - uses: iamsauravsharma/create-dotenv@v4.0.0
-        with:
-          file-path: '/tmp/.env'
-        env:
-          SOME_ENV_VAR: 'Some value'
-      - name: 'Display environment variables'
-        uses: cliffano/command-docker-action@main
-        with:
-          command: 'echo "SOME_ENV_VAR: $SOME_ENV_VAR"'
-          env_file: '/tmp/.env'
-      - name: 'Run custom command from a custom path specified in extra_path'
-        uses: cliffano/command-docker-action@main
-        with:
-          command: 'mkdir -p /opt/workspace/bin/ && touch /opt/workspace/bin/some-exec && chmod +x /opt/workspace/bin/some-exec && which some-exec'
-          extra_path: '/some/path:/opt/workspace/bin'

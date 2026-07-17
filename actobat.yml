@@ -1,0 +1,15 @@
+---
+package_name: command-docker-action
+author: Cliffano Subagio
+generator:
+  component: github-action
+  inputs:
+    project_id: command-docker-action
+    project_name: Command Docker GitHub Action
+    project_desc: A simple GitHub Action for running a shell command via a Docker container
+    author_name: Cliffano Subagio
+    author_email: cliffano@example.com
+    author_url: https://cliffano.com
+    github_id: cliffano
+    github_repo: command-docker-action
+    github_token_prefix: STUDIO

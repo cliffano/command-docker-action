@@ -1,9 +1,9 @@
 ---
 name: 'Command Docker GitHub Action'
-# Custom version field
-version: 1.4.1-pre.0
 description: |
   A simple GitHub Action for running a shell command via a Docker container
+# Custom version field
+version: 1.4.1-pre.0
 author: 'Cliffano Subagio'
 branding:
   icon: 'arrow-right-circle'
