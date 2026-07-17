@@ -13,8 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Start using Actobat as Makefile
 - Shift version setting to action.yml as custom property
 
-### Remove
+### Removed
 - Remove redundant type field in action.yml
+- Remove unused entrypoint scripts and Dockerfile
 
 ## 1.4.0 - 2025-11-04
 ### Added
