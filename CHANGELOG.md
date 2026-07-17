@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+- Start using Actobat as Makefile
+- Shift version setting to action.yml as custom property
+
+### Remove
+- Remove redundant type field in action.yml
+
 ## 1.4.0 - 2025-11-04
 ### Added
 - Add checkout safe directory

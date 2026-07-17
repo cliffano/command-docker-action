@@ -12,30 +12,25 @@ inputs:
   command:
     description: |
       Shell command to be executed via a Docker container
-    type: string
     required: true
   image:
     description: |
       Docker image to be used for running the container
-    type: string
     required: false
     default: 'alpine:3.22'
   shell:
     description: |
       Shell to be used for running the command
-    type: string
     required: false
     default: 'sh'
   extra_path:
     description: |
       Extra PATH environment variable to be added to original PATH during shell command execution
-    type: string
     required: false
     default: ''
   env_file:
     description: |
       Path to env file containing environment variables made available during shell command execution
-    type: string
     required: false
     default: ''
 runs:
