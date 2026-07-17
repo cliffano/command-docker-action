@@ -2,10 +2,10 @@
   "tagFormat": "v{version}",
   "resources": [
     {
-      "path": "Makefile",
-      "type": "makefile",
+      "path": "action.yml",
+      "type": "yaml",
       "params": {
-        "variable": "version"
+        "property": "version"
       }
     },
     {
