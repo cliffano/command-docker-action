@@ -13,3 +13,7 @@ jobs:
           command: 'make deps ci'
           image: cliffano/studio
           shell: bash
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.STUDIO_GITHUB_TOKEN }}
+          publish_dir: docs

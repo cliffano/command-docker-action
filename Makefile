@@ -4,7 +4,7 @@
 ################################################################
 
 # Actobat's version number
-ACTOBAT_VERSION = 0.11.1-pre.0
+ACTOBAT_VERSION = 1.0.0
 
 ################################################################
 # User configuration variables
@@ -112,7 +112,7 @@ endef
 
 # CI target to be executed by CI/CD tool
 all: ci
-ci: clean lint test
+ci: clean lint test docs
 
 # Ensure stage directory exists
 stage:
@@ -129,11 +129,13 @@ deps:
 	python3 -m venv .venv
 	$(call python_venv,python3 -m pip install -r requirements.txt)
 	gh extension install nektos/gh-act
+	npm install -g action-docs
 	$(call deps_extra)
 
 deps-upgrade:
 	python3 -m venv .venv
-	$(call python_venv,python3 -m pip install --upgrade -r requirements.txt)
+	$(call python_venv,python3 -m pip install -r requirements-dev.txt)
+	$(call python_venv,pip-compile --upgrade)
 
 deps-extra-apt:
 	apt-get update
@@ -189,4 +191,13 @@ release-patch:
 
 release: release-minor
 
-.PHONY: $(1) all ci stage clean rmdeps deps deps-upgrade deps-extra-apt update-to-latest update-to-main update-to-version update-dotfiles update-partials lint test release-major release-minor release-patch release
+################################################################
+# Documentation targets
+
+doc: stage
+	rm -rf docs/doc/action-doc/ stage/doc/action-doc/
+	mkdir -p docs/doc/action-doc/ stage/doc/action-doc/
+	action-docs --source action.yml --output stage/doc/action-doc.md
+	$(call python_venv,markdown-docs --source stage/doc/doc.md --output docs/doc/action-doc/index.html)
+
+.PHONY: $(1) all ci stage clean rmdeps deps deps-upgrade deps-extra-apt update-to-latest update-to-main update-to-version update-dotfiles update-partials lint test doc release-major release-minor release-patch release

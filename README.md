@@ -98,5 +98,6 @@ Build reports:
 
 * [Lint report](https://cliffano.github.io/command-docker-action/lint/yamllint.txt)
 * [Test report](https://cliffano.github.io/command-docker-action/test/act.txt)
+* [API documentation](https://cliffano.github.io/command-docker-action/doc/action-docs/index.html)
 
 <!-- END:BUILD_REPORTS -->
