@@ -4,7 +4,7 @@
 ################################################################
 
 # Actobat's version number
-ACTOBAT_VERSION = 1.0.0
+ACTOBAT_VERSION = 1.0.1
 
 ################################################################
 # User configuration variables
@@ -112,7 +112,7 @@ endef
 
 # CI target to be executed by CI/CD tool
 all: ci
-ci: clean lint test docs
+ci: clean lint test doc
 
 # Ensure stage directory exists
 stage:
@@ -157,7 +157,7 @@ update-to-version:
 # Update dotfiles using the generator-github-action
 $(eval $(call set_generator_vars,update-dotfiles,actobat))
 update-dotfiles: stage
-	$(call update_dotfiles_from_generator,github-action,.github/. .gitignore requirements.txt .rtk.json .yamllint)
+	$(call update_dotfiles_from_generator,github-action,.github/ .gitignore requirements.txt .rtk.json .yamllint)
 
 # Update partial snippets using the generator-github-action
 $(eval $(call set_generator_vars,update-partials,actobat))
@@ -166,7 +166,8 @@ update-partials: stage
 
 lint:
 	mkdir -p docs/lint/
-	$(call python_venv,yamllint action.yml .github/workflows/*.yaml) 2>&1 | tee docs/lint/yamllint.txt
+	$(call python_venv,yamllint action.yml .github/workflows/*.yaml > docs/lint/yamllint.txt 2>&1)
+	@if [ ! -s docs/lint/yamllint.txt ]; then echo "yamllint: no issues found" > docs/lint/yamllint.txt; fi
 	$(call python_venv,actionlint -shellcheck= .github/workflows/*.yaml)
 
 test:
@@ -197,7 +198,7 @@ release: release-minor
 doc: stage
 	rm -rf docs/doc/action-doc/ stage/doc/action-doc/
 	mkdir -p docs/doc/action-doc/ stage/doc/action-doc/
-	action-docs --source action.yml --output stage/doc/action-doc.md
-	$(call python_venv,markdown-docs --source stage/doc/doc.md --output docs/doc/action-doc/index.html)
+	action-docs --source action.yml > stage/doc/action-doc.md
+	$(call python_venv,python3 -m markdown stage/doc/action-doc.md > docs/doc/action-doc/index.html)
 
 .PHONY: $(1) all ci stage clean rmdeps deps deps-upgrade deps-extra-apt update-to-latest update-to-main update-to-version update-dotfiles update-partials lint test doc release-major release-minor release-patch release

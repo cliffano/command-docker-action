@@ -11,7 +11,7 @@ jobs:
       - uses: cliffano/command-docker-action@v1.4.0
         with:
           command: 'make deps ci'
-          image: cliffano/studio
+          image: cliffano/studio:3.2.0
           shell: bash
       - uses: peaceiris/actions-gh-pages@v4
         with:
