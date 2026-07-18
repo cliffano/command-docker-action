@@ -1,4 +1,4 @@
-ARG IMAGE=alpine:3.22
+ARG IMAGE=alpine:3.24
 FROM ${IMAGE}
 CMD mkdir -p /opt/workspace/
 WORKDIR /opt/workspace/
