@@ -1,0 +1,52 @@
+<pre><code> _       ____   _____   ___    ___    _   _           ____     ___     ____   ____  
+/ \     / ___| |_   _| |_ _|  / _ \  | \ | |         |  _ \   / _ \   / ___| / ___|
+</code></pre>
+<p>/ _ \   | |       | |    | |  | | | | |  \| |  <strong><em>_</em>  | | | | | | | | | |     _</strong> \ 
+  / ___ \  | |<strong><em>    | |    | |  | |</em>| | | |\  | |</strong><strong><em>| | |</em>| | | |_| | | |</strong><em>   ___) |
+ /</em>/   _\  _<strong><em>|   |</em>|   |</strong><em>|  ___/  |</em>| _|         |<strong><em>_/   _</em>_/   _</strong>_| |____/ </p>
+<h2>Description</h2>
+<p>A simple GitHub Action for running a shell command via a Docker container</p>
+<h2>Inputs</h2>
+<p>| name | description | required | default |
+| --- | --- | --- | --- |
+| <code>command</code> | <p>Shell command to be executed via a Docker container</p> | <code>true</code> | <code>""</code> |
+| <code>image</code> | <p>Docker image to be used for running the container</p> | <code>false</code> | <code>alpine:3.22</code> |
+| <code>shell</code> | <p>Shell to be used for running the command</p> | <code>false</code> | <code>sh</code> |
+| <code>extra_path</code> | <p>Extra PATH environment variable to be added to original PATH during shell command execution</p> | <code>false</code> | <code>""</code> |
+| <code>env_file</code> | <p>Path to env file containing environment variables made available during shell command execution</p> | <code>false</code> | <code>""</code> |</p>
+<h2>Runs</h2>
+<p>This action is a <code>composite</code> action.</p>
+<h2>Usage</h2>
+<p>```yaml
+- uses: <strong><em>PROJECT</em></strong>@<strong><em>VERSION</em></strong>
+  with:
+    command:
+    # Shell command to be executed via a Docker container
+    #
+    # Required: true
+    # Default: ""</p>
+<pre><code>image:
+# Docker image to be used for running the container
+#
+# Required: false
+# Default: alpine:3.22
+
+shell:
+# Shell to be used for running the command
+#
+# Required: false
+# Default: sh
+
+extra_path:
+# Extra PATH environment variable to be added to original PATH during shell command execution
+#
+# Required: false
+# Default: ""
+
+env_file:
+# Path to env file containing environment variables made available during shell command execution
+#
+# Required: false
+# Default: ""
+</code></pre>
+<p>```</p>
