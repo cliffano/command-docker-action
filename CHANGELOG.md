@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Shift version setting to action.yml as custom property
 - Upgrade default image to Alpine 3.24
 
-### Remove
+### Removed
 - Remove redundant type field in action.yml
 
 ### Fixed
