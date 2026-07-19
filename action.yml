@@ -17,7 +17,7 @@ inputs:
     description: |
       Docker image to be used for running the container
     required: false
-    default: 'alpine:3.22'
+    default: 'alpine:3.24'
   shell:
     description: |
       Shell to be used for running the command
