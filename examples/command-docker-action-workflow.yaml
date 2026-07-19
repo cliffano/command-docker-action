@@ -11,9 +11,7 @@ jobs:
         uses: ./
         with:
           command: 'echo "Hello World"'
-          push_changes: 'false'
       - name: Use Remote Action
         uses: cliffano/command-docker-action@main
         with:
           command: 'echo "Hello World"'
-          push_changes: 'false'
