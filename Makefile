@@ -4,7 +4,7 @@
 ################################################################
 
 # Actobat's version number
-ACTOBAT_VERSION = 1.0.2
+ACTOBAT_VERSION = 1.1.0
 
 ################################################################
 # User configuration variables
@@ -158,6 +158,7 @@ update-to-version:
 $(eval $(call set_generator_vars,update-dotfiles,actobat))
 update-dotfiles: stage
 	$(call update_dotfiles_from_generator,github-action,.github/ .gitignore requirements.txt .rtk.json .yamllint)
+	$(call run_hook,x-post-update-dotfiles)
 
 # Update partial snippets using the generator-github-action
 $(eval $(call set_generator_vars,update-partials,actobat))
