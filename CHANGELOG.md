@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Remove
 - Remove redundant type field in action.yml
 
+### Fixed
+- Fix local_container name conflict when multiple actions run on the same host
+
 ## 1.4.0 - 2025-11-04
 ### Added
 - Add checkout safe directory
