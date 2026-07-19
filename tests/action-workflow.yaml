@@ -21,7 +21,7 @@ jobs:
         uses: ./
         with:
           command: 'cat /etc/*-release'
-          image: rockylinux:9.3
+          image: rockylinux:10
           shell: bash
       - uses: iamsauravsharma/create-dotenv@v4.0.0
         with:
