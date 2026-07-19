@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add example and test workflows
 - Add Copilot instructions
+- Add post-update-dotfiles run hook to ensure CI workflow is using command-docker-action latest main
 
 ### Changed
 - Start using Actobat as Makefile

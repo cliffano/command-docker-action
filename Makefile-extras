@@ -1,0 +1,5 @@
+x-post-update-dotfiles:
+    # command-docker-action does not follow generator template since CI run needs to use the latest main in order to pick up any issue with the action as soon as possible
+	git checkout .github/workflows/ci-workflow.yaml
+
+.PHONY: x-post-update-dotfiles
