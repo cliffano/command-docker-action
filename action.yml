@@ -1,13 +1,12 @@
 ---
-name: 'Command Docker GitHub Action'
+name: Command Docker GitHub Action
 description: |
   A simple GitHub Action for running a shell command via a Docker container
-# Custom version field
-version: 1.4.1-pre.0
-author: 'Cliffano Subagio'
+version: 2.0.0
+author: Cliffano Subagio
 branding:
-  icon: 'arrow-right-circle'
-  color: 'white'
+  icon: arrow-right-circle
+  color: white
 inputs:
   command:
     description: |
@@ -17,42 +16,59 @@ inputs:
     description: |
       Docker image to be used for running the container
     required: false
-    default: 'alpine:3.24'
+    default: alpine:3.24
   shell:
     description: |
       Shell to be used for running the command
     required: false
-    default: 'sh'
+    default: sh
   extra_path:
-    description: |
-      Extra PATH environment variable to be added to original PATH during shell command execution
+    description: >
+      Extra PATH environment variable to be added to original PATH during shell
+      command execution
     required: false
     default: ''
   env_file:
-    description: |
-      Path to env file containing environment variables made available during shell command execution
+    description: >
+      Path to env file containing environment variables made available during
+      shell command execution
     required: false
     default: ''
 runs:
-  using: 'composite'
+  using: composite
   steps:
     - name: Build Docker image on the the GitHub Action directory
       shell: sh
-      run: |
-        cd $GITHUB_ACTION_PATH && docker build -f Dockerfile --build-arg IMAGE=${{ inputs.image }} --build-arg SHELL=${{ inputs.shell }} -t local_image:8.8.8 .
+      run: >
+        cd $GITHUB_ACTION_PATH && docker build -f Dockerfile --build-arg
+        IMAGE=${{ inputs.image }} --build-arg SHELL=${{ inputs.shell }} -t
+        local_image:8.8.8 .
     - name: Run Docker container on the GitHub Workspace directory
       if: inputs.env_file == ''
       shell: sh
-      run: |
+      run: >
         cd "$GITHUB_WORKSPACE"
-        unique_id="$(date +%Y%m%d%H%S)$(dd if=/dev/urandom bs=2 count=1 2>/dev/null | od -An -tu2 | tr -d ' ')"
+
+        unique_id="$(date +%Y%m%d%H%S)$(dd if=/dev/urandom bs=2 count=1
+        2>/dev/null | od -An -tu2 | tr -d ' ')"
+
         container_name="local_container_${unique_id}"
-        docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/opt/workspace/ --name "$container_name" local_image:8.8.8 "${{ inputs.command }}" "${{ inputs.extra_path }}"
+
+        docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v
+        .:/opt/workspace/ --name "$container_name" local_image:8.8.8 "${{
+        inputs.command }}" "${{ inputs.extra_path }}"
     - name: Run Docker container on the GitHub Workspace directory with env file
       if: inputs.env_file != ''
       shell: sh
-      run: |
+      run: >
         cd "$GITHUB_WORKSPACE"
-        unique_id="$(date +%Y%m%d%H%S)$(dd if=/dev/urandom bs=2 count=1 2>/dev/null | od -An -tu2 | tr -d ' ')"
+
+        unique_id="$(date +%Y%m%d%H%S)$(dd if=/dev/urandom bs=2 count=1
+        2>/dev/null | od -An -tu2 | tr -d ' ')"
+
         container_name="local_container_${unique_id}"
-        docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/opt/workspace/ --env-file "${{ inputs.env_file }}" --name "$container_name" local_image:8.8.8 "${{ inputs.command }}" "${{ inputs.extra_path }}"
+
+        docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v
+        .:/opt/workspace/ --env-file "${{ inputs.env_file }}" --name
+        "$container_name" local_image:8.8.8 "${{ inputs.command }}" "${{
+        inputs.extra_path }}"
