@@ -2,7 +2,7 @@
 name: Command Docker GitHub Action
 description: |
   A simple GitHub Action for running a shell command via a Docker container
-version: 2.0.0
+version: 2.0.1-pre.0
 author: Cliffano Subagio
 branding:
   icon: arrow-right-circle
