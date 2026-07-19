@@ -35,7 +35,7 @@ jobs:
         uses: cliffano/command-docker-action@main
         with:
           command: 'cat /etc/*-release'
-          image: rockylinux:10
+          image: rockylinux/rockylinux:10
           shell: bash
 ```
 
