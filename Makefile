@@ -4,7 +4,7 @@
 ################################################################
 
 # Actobat's version number
-ACTOBAT_VERSION = 1.0.1
+ACTOBAT_VERSION = 1.0.2
 
 ################################################################
 # User configuration variables
@@ -196,9 +196,9 @@ release: release-minor
 # Documentation targets
 
 doc: stage
-	rm -rf docs/doc/action-doc/ stage/doc/action-doc/
-	mkdir -p docs/doc/action-doc/ stage/doc/action-doc/
-	action-docs --source action.yml > stage/doc/action-doc.md
-	$(call python_venv,python3 -m markdown stage/doc/action-doc.md > docs/doc/action-doc/index.html)
+	rm -rf docs/doc/action-docs/ stage/doc/
+	mkdir -p docs/doc/action-docs/ stage/doc/
+	action-docs --source action.yml > stage/doc/action-docs.md
+	$(call python_venv,python3 -m markdown stage/doc/action-docs.md > docs/doc/action-docs/index.html)
 
 .PHONY: $(1) all ci stage clean rmdeps deps deps-upgrade deps-extra-apt update-to-latest update-to-main update-to-version update-dotfiles update-partials lint test doc release-major release-minor release-patch release
