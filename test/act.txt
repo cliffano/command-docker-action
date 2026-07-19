@@ -1,4 +1,4 @@
-time="2026-07-19T06:50:32Z" level=info msg="Using docker host 'unix:///var/run/docker.sock', and daemon socket 'unix:///var/run/docker.sock'"
+time="2026-07-19T06:54:30Z" level=info msg="Using docker host 'unix:///var/run/docker.sock', and daemon socket 'unix:///var/run/docker.sock'"
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Set up job
 [Test Local Action Outside Standard GitHub Workflows Directory/test] 🚀  Start image=catthehacker/ubuntu:act-latest
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   🐳  docker pull image=catthehacker/ubuntu:act-latest platform= username= forcePull=true
@@ -9,7 +9,7 @@ time="2026-07-19T06:50:32Z" level=info msg="Using docker host 'unix:///var/run/d
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   ☁  git clone 'https://github.com/iamsauravsharma/create-dotenv' # ref=v4.0.0
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Main Checkout code
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   🐳  docker cp src=/opt/workspace/. dst=/opt/workspace
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Checkout code [23.12886ms]
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Checkout code [33.925056ms]
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Main Execute cat /etc/*-release using default sh shell via default Docker container
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Main Build Docker image on the the GitHub Action directory
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   🐳  docker exec cmd=[sh -e /var/run/act/workflow/1-composite-0.sh] user= workdir=
@@ -20,7 +20,7 @@ time="2026-07-19T06:50:32Z" level=info msg="Using docker host 'unix:///var/run/d
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #1 DONE 0.0s
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | 
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #2 [internal] load metadata for docker.io/library/alpine:3.24
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #2 DONE 0.9s
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #2 DONE 0.7s
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | 
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #3 [internal] load .dockerignore
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #3 transferring context: 2B done
@@ -45,22 +45,21 @@ time="2026-07-19T06:50:32Z" level=info msg="Using docker host 'unix:///var/run/d
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | 
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 exporting to image
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 exporting layers
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 exporting layers 0.6s done
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 writing image sha256:44ae2440d778eed8fc30ed79e63487755120a4371ef4cbcaeea1565e584fcf4d
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 writing image sha256:44ae2440d778eed8fc30ed79e63487755120a4371ef4cbcaeea1565e584fcf4d done
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 exporting layers 0.9s done
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 writing image sha256:04ce3ddf13687a0febec1e7da2b790f1a6d8c2d2cc481f54ea052e4102d3423f done
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 naming to docker.io/library/local_image:8.8.8 done
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 DONE 0.6s
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 DONE 0.9s
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | 
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   |  [33m1 warning found (use docker --debug to expand):
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | [0m - JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS signals (line 3)
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Build Docker image on the the GitHub Action directory [1.956077722s]
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Build Docker image on the the GitHub Action directory [2.007818211s]
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Main Run Docker container on the GitHub Workspace directory
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   🐳  docker exec cmd=[sh -e /var/run/act/workflow/1-composite-1.sh] user= workdir=
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | PATH: :/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | Current directory: /opt/workspace
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | total 8K     
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | drwxr-xr-x    1 root     root        4.0K Jul 19 06:50 ..
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | drwxr-xr-x    2 root     root        4.0K Jul 19 06:50 .
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | drwxr-xr-x    1 root     root        4.0K Jul 19 06:54 ..
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | drwxr-xr-x    2 root     root        4.0K Jul 19 06:54 .
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | Executing command: cat /etc/*-release
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | 3.24.1
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | NAME="Alpine Linux"
@@ -69,8 +68,8 @@ time="2026-07-19T06:50:32Z" level=info msg="Using docker host 'unix:///var/run/d
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | PRETTY_NAME="Alpine Linux v3.24"
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | HOME_URL="https://alpinelinux.org/"
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | BUG_REPORT_URL="https://gitlab.alpinelinux.org/alpine/aports/-/issues"
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Run Docker container on the GitHub Workspace directory [403.766975ms]
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Execute cat /etc/*-release using default sh shell via default Docker container [2.488212058s]
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Run Docker container on the GitHub Workspace directory [405.927174ms]
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Execute cat /etc/*-release using default sh shell via default Docker container [2.529944945s]
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Main Execute cat /etc/*-release using bash shell via Ubuntu 24.04 Docker container
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Main Build Docker image on the the GitHub Action directory
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   🐳  docker exec cmd=[sh -e /var/run/act/workflow/2-composite-0.sh] user= workdir=
@@ -81,7 +80,7 @@ time="2026-07-19T06:50:32Z" level=info msg="Using docker host 'unix:///var/run/d
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #1 DONE 0.0s
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | 
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #2 [internal] load metadata for docker.io/library/ubuntu:24.04
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #2 DONE 0.8s
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #2 DONE 0.5s
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | 
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #3 [internal] load .dockerignore
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #3 transferring context: 2B done
@@ -93,9 +92,9 @@ time="2026-07-19T06:50:32Z" level=info msg="Using docker host 'unix:///var/run/d
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | 
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 [1/3] FROM docker.io/library/ubuntu:24.04@sha256:4fbb8e6a8395de5a7550b33509421a2bafbc0aab6c06ba2cef9ebffbc7092d90
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 resolve docker.io/library/ubuntu:24.04@sha256:4fbb8e6a8395de5a7550b33509421a2bafbc0aab6c06ba2cef9ebffbc7092d90 done
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 sha256:4fbb8e6a8395de5a7550b33509421a2bafbc0aab6c06ba2cef9ebffbc7092d90 6.69kB / 6.69kB done
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 sha256:52df9b1ee71626e0088f7d400d5c6b5f7bb916f8f0c82b474289a4ece6cf3faf 424B / 424B done
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 sha256:ef91e4b15da8323a1523adb2b371998dcd3063dae8553cc2744c178ccc065bc4 2.05kB / 2.05kB done
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 sha256:4fbb8e6a8395de5a7550b33509421a2bafbc0aab6c06ba2cef9ebffbc7092d90 6.69kB / 6.69kB done
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 DONE 0.0s
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | 
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #6 [2/3] WORKDIR /opt/workspace/
@@ -106,21 +105,21 @@ time="2026-07-19T06:50:32Z" level=info msg="Using docker host 'unix:///var/run/d
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | 
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 exporting to image
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 exporting layers
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 exporting layers 0.5s done
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 writing image sha256:6749b4b452e7495c8366c2a9b9c134fdf2200c3cf790b6f999fc930d5b7486ba done
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 exporting layers 0.7s done
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 writing image sha256:d118b6ac6bbe46e21c31d22d17878d2fb28af5ac1ae9ce5bf4880c3414d8ee94 done
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 naming to docker.io/library/local_image:8.8.8 done
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 DONE 0.5s
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 DONE 0.7s
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | 
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   |  [33m1 warning found (use docker --debug to expand):
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | [0m - JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS signals (line 3)
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Build Docker image on the the GitHub Action directory [1.474501257s]
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Build Docker image on the the GitHub Action directory [1.449708888s]
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Main Run Docker container on the GitHub Workspace directory
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   🐳  docker exec cmd=[sh -e /var/run/act/workflow/2-composite-1.sh] user= workdir=
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | PATH: :/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | Current directory: /opt/workspace
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | total 8.0K
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | drwxr-xr-x+ 2 root root 4.0K Jul 19 06:50 .
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | drwxr-xr-x  1 root root 4.0K Jul 19 06:51 ..
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | drwxr-xr-x+ 2 root root 4.0K Jul 19 06:54 .
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | drwxr-xr-x  1 root root 4.0K Jul 19 06:54 ..
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | Executing command: cat /etc/*-release
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | DISTRIB_ID=Ubuntu
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | DISTRIB_RELEASE=24.04
@@ -139,8 +138,8 @@ time="2026-07-19T06:50:32Z" level=info msg="Using docker host 'unix:///var/run/d
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | UBUNTU_CODENAME=noble
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | LOGO=ubuntu-logo
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Run Docker container on the GitHub Workspace directory [397.530771ms]
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Execute cat /etc/*-release using bash shell via Ubuntu 24.04 Docker container [2.001513889s]
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Run Docker container on the GitHub Workspace directory [393.521774ms]
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Execute cat /etc/*-release using bash shell via Ubuntu 24.04 Docker container [1.958480765s]
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Main Execute cat /etc/*-release using bash shell via Rocky Linux 9.3 Docker container
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Main Build Docker image on the the GitHub Action directory
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   🐳  docker exec cmd=[sh -e /var/run/act/workflow/3-composite-0.sh] user= workdir=
@@ -151,7 +150,7 @@ time="2026-07-19T06:50:32Z" level=info msg="Using docker host 'unix:///var/run/d
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #1 DONE 0.0s
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | 
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #2 [internal] load metadata for docker.io/rockylinux/rockylinux:10
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #2 DONE 0.8s
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #2 DONE 0.5s
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | 
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #3 [internal] load .dockerignore
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #3 transferring context: 2B done
@@ -163,16 +162,16 @@ time="2026-07-19T06:50:32Z" level=info msg="Using docker host 'unix:///var/run/d
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | 
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 [1/3] FROM docker.io/rockylinux/rockylinux:10@sha256:827d37bc128288ccf160ee318bb3cb92d591164cb217e92f8bc61e3982ae1834
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 resolve docker.io/rockylinux/rockylinux:10@sha256:827d37bc128288ccf160ee318bb3cb92d591164cb217e92f8bc61e3982ae1834 done
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 sha256:827d37bc128288ccf160ee318bb3cb92d591164cb217e92f8bc61e3982ae1834 1.12kB / 1.12kB done
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 sha256:e372170ca8630f0f03e9b70fdd0bf4a3ce3426b0de7cdba615f06337389de176 573B / 573B done
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 sha256:0b5329d806d053ad65ab6b21fc3e49f1025e970cd826547a01a93b3ce9012796 1.01kB / 1.01kB done
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 sha256:530d6b37ba46a527ac6dfd8fa14e3b44a6abd963d7ba147d3751a1650febf4b6 2.10MB / 87.69MB 0.1s
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 sha256:827d37bc128288ccf160ee318bb3cb92d591164cb217e92f8bc61e3982ae1834 1.12kB / 1.12kB done
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 sha256:530d6b37ba46a527ac6dfd8fa14e3b44a6abd963d7ba147d3751a1650febf4b6 41.94MB / 87.69MB 0.2s
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 sha256:530d6b37ba46a527ac6dfd8fa14e3b44a6abd963d7ba147d3751a1650febf4b6 79.69MB / 87.69MB 0.3s
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 sha256:530d6b37ba46a527ac6dfd8fa14e3b44a6abd963d7ba147d3751a1650febf4b6 87.69MB / 87.69MB 0.3s done
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 extracting sha256:530d6b37ba46a527ac6dfd8fa14e3b44a6abd963d7ba147d3751a1650febf4b6 0.1s
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 extracting sha256:530d6b37ba46a527ac6dfd8fa14e3b44a6abd963d7ba147d3751a1650febf4b6 2.9s done
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 DONE 3.3s
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 sha256:530d6b37ba46a527ac6dfd8fa14e3b44a6abd963d7ba147d3751a1650febf4b6 0B / 87.69MB 0.1s
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 sha256:530d6b37ba46a527ac6dfd8fa14e3b44a6abd963d7ba147d3751a1650febf4b6 25.17MB / 87.69MB 0.2s
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 sha256:530d6b37ba46a527ac6dfd8fa14e3b44a6abd963d7ba147d3751a1650febf4b6 67.11MB / 87.69MB 0.3s
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 extracting sha256:530d6b37ba46a527ac6dfd8fa14e3b44a6abd963d7ba147d3751a1650febf4b6
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 sha256:530d6b37ba46a527ac6dfd8fa14e3b44a6abd963d7ba147d3751a1650febf4b6 87.69MB / 87.69MB 0.4s done
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 extracting sha256:530d6b37ba46a527ac6dfd8fa14e3b44a6abd963d7ba147d3751a1650febf4b6 2.8s done
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #5 DONE 3.2s
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | 
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #6 [2/3] WORKDIR /opt/workspace/
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #6 DONE 0.4s
@@ -182,21 +181,21 @@ time="2026-07-19T06:50:32Z" level=info msg="Using docker host 'unix:///var/run/d
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | 
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 exporting to image
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 exporting layers
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 exporting layers 0.7s done
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 writing image sha256:fb75abc605183793a09ee52074b40aa8e153720322e75fd1a682a2baa7364c0f done
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 exporting layers 0.4s done
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 writing image sha256:028fb01906af3d8f0ca343cc25485dab603d8490c4d5e56f32c6038b537c4076 done
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 naming to docker.io/library/local_image:8.8.8 done
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 DONE 0.7s
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 DONE 0.4s
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | 
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   |  [33m1 warning found (use docker --debug to expand):
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | [0m - JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS signals (line 3)
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Build Docker image on the the GitHub Action directory [5.397574407s]
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Build Docker image on the the GitHub Action directory [4.731735069s]
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Main Run Docker container on the GitHub Workspace directory
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   🐳  docker exec cmd=[sh -e /var/run/act/workflow/3-composite-1.sh] user= workdir=
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | PATH: :/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | Current directory: /opt/workspace
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | total 8.0K
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | drwxr-xr-x+ 2 root root 4.0K Jul 19 06:50 .
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | drwxr-xr-x  1 root root 4.0K Jul 19 06:51 ..
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | drwxr-xr-x+ 2 root root 4.0K Jul 19 06:54 .
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | drwxr-xr-x  1 root root 4.0K Jul 19 06:55 ..
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | Executing command: cat /etc/*-release
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | NAME="Rocky Linux"
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | VERSION="10.2 (Red Quartz)"
@@ -221,8 +220,8 @@ time="2026-07-19T06:50:32Z" level=info msg="Using docker host 'unix:///var/run/d
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | Rocky Linux release 10.2 (Red Quartz)
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | Rocky Linux release 10.2 (Red Quartz)
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | Rocky Linux release 10.2 (Red Quartz)
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Run Docker container on the GitHub Workspace directory [275.353889ms]
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Execute cat /etc/*-release using bash shell via Rocky Linux 9.3 Docker container [5.794994452s]
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Run Docker container on the GitHub Workspace directory [261.102732ms]
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Execute cat /etc/*-release using bash shell via Rocky Linux 9.3 Docker container [5.109149083s]
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Main iamsauravsharma/create-dotenv@v4.0.0
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   🐳  docker cp src=/root/.cache/act/iamsauravsharma-create-dotenv@v4.0.0/ dst=/var/run/act/actions/iamsauravsharma-create-dotenv@v4.0.0/
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   🐳  docker exec cmd=[/opt/acttoolcache/node/24.18.0/x64/bin/node /var/run/act/actions/iamsauravsharma-create-dotenv@v4.0.0/dist/index.js] user= workdir=
@@ -231,7 +230,7 @@ time="2026-07-19T06:50:32Z" level=info msg="Using docker host 'unix:///var/run/d
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | Converting env content map to array
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | Converting env array into string
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | Writing env content to file /tmp/.env
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main iamsauravsharma/create-dotenv@v4.0.0 [166.161437ms]
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main iamsauravsharma/create-dotenv@v4.0.0 [156.43818ms]
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Main Display environment variables
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Main Build Docker image on the the GitHub Action directory
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   🐳  docker exec cmd=[sh -e /var/run/act/workflow/5-composite-0.sh] user= workdir=
@@ -263,24 +262,24 @@ time="2026-07-19T06:50:32Z" level=info msg="Using docker host 'unix:///var/run/d
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | 
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 exporting to image
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 exporting layers done
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 writing image sha256:44ae2440d778eed8fc30ed79e63487755120a4371ef4cbcaeea1565e584fcf4d done
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 writing image sha256:04ce3ddf13687a0febec1e7da2b790f1a6d8c2d2cc481f54ea052e4102d3423f done
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 naming to docker.io/library/local_image:8.8.8 done
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 DONE 0.0s
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | 
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   |  [33m1 warning found (use docker --debug to expand):
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | [0m - JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS signals (line 3)
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Build Docker image on the the GitHub Action directory [337.639839ms]
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Build Docker image on the the GitHub Action directory [287.342861ms]
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Main Run Docker container on the GitHub Workspace directory with env file
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   🐳  docker exec cmd=[sh -e /var/run/act/workflow/5-composite-2.sh] user= workdir=
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | PATH: :/opt/acttoolcache/node/24.18.0/x64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | Current directory: /opt/workspace
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | total 8K     
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | drwxr-xr-x    1 root     root        4.0K Jul 19 06:50 ..
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | drwxr-xr-x    2 root     root        4.0K Jul 19 06:50 .
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | drwxr-xr-x    1 root     root        4.0K Jul 19 06:54 ..
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | drwxr-xr-x    2 root     root        4.0K Jul 19 06:54 .
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | Executing command: echo SOME_ENV_VAR:
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | SOME_ENV_VAR:
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Run Docker container on the GitHub Workspace directory with env file [257.93421ms]
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Display environment variables [722.270616ms]
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Run Docker container on the GitHub Workspace directory with env file [246.788991ms]
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Display environment variables [651.778182ms]
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Main Run custom command from a custom path specified in extra_path
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Main Build Docker image on the the GitHub Action directory
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   🐳  docker exec cmd=[sh -e /var/run/act/workflow/6-composite-0.sh] user= workdir=
@@ -312,34 +311,34 @@ time="2026-07-19T06:50:32Z" level=info msg="Using docker host 'unix:///var/run/d
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | 
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 exporting to image
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 exporting layers done
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 writing image sha256:44ae2440d778eed8fc30ed79e63487755120a4371ef4cbcaeea1565e584fcf4d done
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 writing image sha256:04ce3ddf13687a0febec1e7da2b790f1a6d8c2d2cc481f54ea052e4102d3423f done
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 naming to docker.io/library/local_image:8.8.8 done
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | #8 DONE 0.0s
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | 
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   |  [33m1 warning found (use docker --debug to expand):
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | [0m - JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS signals (line 3)
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Build Docker image on the the GitHub Action directory [338.197185ms]
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Build Docker image on the the GitHub Action directory [289.309631ms]
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Main Run Docker container on the GitHub Workspace directory
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   🐳  docker exec cmd=[sh -e /var/run/act/workflow/6-composite-1.sh] user= workdir=
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | PATH: /some/path:/opt/workspace/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | Current directory: /opt/workspace
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | total 8K     
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | drwxr-xr-x    1 root     root        4.0K Jul 19 06:50 ..
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   | drwxr-xr-x    2 root     root        4.0K Jul 19 06:50 .
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | drwxr-xr-x    1 root     root        4.0K Jul 19 06:54 ..
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   | drwxr-xr-x    2 root     root        4.0K Jul 19 06:54 .
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | Executing command: mkdir -p /opt/workspace/bin/ && touch /opt/workspace/bin/some-exec && chmod +x /opt/workspace/bin/some-exec && which some-exec
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   | /opt/workspace/bin/some-exec
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Run Docker container on the GitHub Workspace directory [255.633206ms]
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Run custom command from a custom path specified in extra_path [715.60333ms]
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Run Docker container on the GitHub Workspace directory [244.931072ms]
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Main Run custom command from a custom path specified in extra_path [650.144565ms]
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Post Run custom command from a custom path specified in extra_path
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Post Run custom command from a custom path specified in extra_path [35.356µs]
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Post Run custom command from a custom path specified in extra_path [44.886µs]
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Post Display environment variables
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Post Display environment variables [231.663µs]
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Post Display environment variables [58.786µs]
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Post Execute cat /etc/*-release using bash shell via Rocky Linux 9.3 Docker container
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Post Execute cat /etc/*-release using bash shell via Rocky Linux 9.3 Docker container [46.537µs]
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Post Execute cat /etc/*-release using bash shell via Rocky Linux 9.3 Docker container [37.095µs]
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Post Execute cat /etc/*-release using bash shell via Ubuntu 24.04 Docker container
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Post Execute cat /etc/*-release using bash shell via Ubuntu 24.04 Docker container [32.251µs]
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Post Execute cat /etc/*-release using bash shell via Ubuntu 24.04 Docker container [40.72µs]
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Post Execute cat /etc/*-release using default sh shell via default Docker container
-[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Post Execute cat /etc/*-release using default sh shell via default Docker container [42.009µs]
+[Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Post Execute cat /etc/*-release using default sh shell via default Docker container [32.277µs]
 [Test Local Action Outside Standard GitHub Workflows Directory/test] ⭐ Run Complete job
 [Test Local Action Outside Standard GitHub Workflows Directory/test] Cleaning up container for job test
 [Test Local Action Outside Standard GitHub Workflows Directory/test]   ✅  Success - Complete job
