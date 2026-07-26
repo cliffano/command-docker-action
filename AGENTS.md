@@ -1,8 +1,4 @@
----
-description: "Standard GitHub Action project conventions and tooling using Actobat"
----
-
-# GitHub Action Project Standards
+# AGENTS.md
 
 This repository contains a GitHub Action project following a unified standard
 for tooling, build automation, and coding conventions. All projects share the
@@ -64,6 +60,7 @@ make ci                # Run lint and test
 make lint              # Run yamllint and actionlint
 make test              # Run local workflow tests using gh act
 make test-examples     # Run example shell scripts
+```
 
 ### Release Targets
 
@@ -91,24 +88,212 @@ You can run the container using: `docker run --rm --workdir /opt/workspace -v /v
 
 Alternatively you can run the Actobat Makefile targets via Docker container entrypoint, e.g. `docker run --rm --workdir /opt/workspace -v /var/run/docker.sock:/var/run/docker.sock -v $PWD:/opt/workspace -i -t cliffano/studio make ci`.
 
-## Code Style, Testing, and Detailed Guidance
+## Code Style and Linting
 
-This file keeps the high-level project defaults. Detailed implementation rules
-live in scoped instruction files so they are only loaded when relevant.
+Applies to: `action.yml`, `.github/workflows/**/*.yml`, `.github/workflows/**/*.yaml`, `examples/**/*.sh`
 
-### Code Style and Linting
+### YAML Linting
 
-- YAML files are validated with `yamllint`
-- Workflow files are validated with `actionlint`
-- Detailed GitHub Action coding rules are in
-  `.github/instructions/github-action-code.instructions.md`
+All YAML and workflow files must pass lint checks:
 
-### Testing
+```bash
+make lint
+```
+
+Guidelines:
+
+- Use two-space indentation in YAML files
+- Keep mappings and sequences consistent and readable
+- Quote strings when they contain special characters or shell fragments
+- Prefer explicit keys over compact YAML that hides intent
+
+### Workflow Static Analysis
+
+Workflow files should produce zero `actionlint` error and warning:
+
+```bash
+make lint
+```
+
+Guidelines:
+
+- Prefer explicit `shell` declarations for `run` steps
+- Keep workflow expressions readable and simple
+- Fix root causes before adding workarounds
+
+### Action Definition
+
+- Keep the `action.yml` metadata complete and accurate
+- Define inputs and outputs explicitly
+- Keep the `runs` section simple and composable
+- Use `composite` actions for projects unless the template says
+  otherwise
+- Keep the inline Python in `action.yml` small and focused on transformation
+
+#### Inputs and Outputs
+
+- Use concise, stable input names in `snake_case`
+- Keep output names aligned with documented behavior
+- Ensure every documented output is written to `GITHUB_OUTPUT`
+
+#### Inline Python in Composite Actions
+
+- Keep inline scripts deterministic and side effect free
+- Prefer clear variable names for transformed values
+- Write outputs using append mode and explicit UTF-8 encoding
+- Avoid external dependencies for simple transformations
+
+### Workflow Files
+
+- Use descriptive workflow names and job names
+- Prefer `actions/checkout` at a clear version pin
+- Keep test workflows self-contained and deterministic
+- Use the repository-local action via `./` in local validation workflows
+- Keep workflow steps minimal and explicit
+
+#### Workflow Conventions
+
+- Keep triggers explicit (`push`, `pull_request`, `workflow_dispatch`)
+- Use pinned major versions for third-party actions
+- Keep CI jobs reproducible by using known runner images
+- Prefer one responsibility per step so failures are easy to diagnose
+
+### Shell Scripts
+
+- Prefer POSIX shell syntax for example scripts
+- Make scripts safe to run repeatedly
+- Keep environment assumptions documented in the script or README
+
+### File Organization
+
+Typical layout for generated action projects:
+
+```text
+project/
+├── action.yml
+├── .github/workflows/
+├── tests/
+└── examples/
+```
+
+Guidelines:
+
+- Keep action contract in `action.yml`
+- Keep CI and release logic in `.github/workflows/`
+- Keep local workflow validation scenarios in `tests/`
+- Keep user-facing usage examples in `examples/`
+
+### Error Handling
+
+- Fail fast in scripts and validation steps
+- Make assertion and validation failures explicit in workflow logs
+- Avoid swallowing errors in inline Python blocks
+
+### Validation
+
+- Treat `yamllint` and `actionlint` errors as build failures
+- When changing workflow structure, update the local test workflow as well
+- Keep README examples aligned with action inputs and outputs
+
+## Testing
+
+Applies to: `tests/**/*.yml`, `tests/**/*.yaml`
 
 - Local workflow tests live in `tests/`
 - Example scripts live in `examples/`
 - Run tests with `make test` and `make test-examples`
-- Detailed testing rules are in `.github/instructions/testing.instructions.md`
+
+### Test Structure
+
+- Keep local workflow tests in `tests/`
+- Use a single workflow file per scenario when possible
+- Keep test workflows focused on observable action outputs
+
+#### Test Files
+
+```text
+tests/
+	action-workflow.yaml     # End-to-end local action validation
+```
+
+Guidelines:
+
+- Keep one primary test workflow per action contract
+- Add separate workflows only for materially different scenarios
+
+### Workflow Test Style
+
+- Use `gh act`-friendly workflows that run locally without external services
+- Verify action outputs with explicit shell assertions
+- Prefer stable input values and exact output checks
+- Keep tests deterministic and free from network dependence
+
+#### Workflow Pattern
+
+Use a clear step sequence in local workflow tests:
+
+1. Check out repository code
+2. Run action via `uses: ./`
+3. Capture outputs with a step `id`
+4. Assert outputs explicitly in a shell step
+
+#### Naming Conventions
+
+- Use descriptive job names like `test`
+- Use descriptive step names (`Test Action`, `Verify message outputs`)
+- Use output step IDs that match the tested behavior (`message`, `transform`)
+
+### Test Assertions
+
+- Check output values directly in a shell step
+- Verify both transformed data and any expected side effects
+- Fail fast when an output is missing or malformed
+
+#### Assertion Pattern
+
+Prefer direct shell assertions for exact values:
+
+```sh
+test "${{ steps.message.outputs.original }}" = 'Hello World'
+test "${{ steps.message.outputs.uppercase }}" = 'HELLO WORLD'
+```
+
+Guidelines:
+
+- Assert all declared outputs, not only one happy-path value
+- Use exact-match assertions for deterministic transformations
+- Keep assertions in one dedicated verification step
+
+### Running Tests
+
+- Run the local workflow test suite with `make test`
+- Update the local workflow test whenever the action contract changes
+
+#### Local Execution
+
+```bash
+make test
+```
+
+This command runs `gh act` against the local workflow test definition.
+
+### CI Integration
+
+Tests are run as part of `make ci`:
+
+```bash
+make lint
+make test
+```
+
+All tests must pass before merging.
+
+### Common Pitfalls
+
+1. Forgetting to assert new outputs after changing `action.yml`
+2. Using non-deterministic input data in assertions
+3. Hiding failures by combining too many operations in one step
+4. Testing only transformed outputs without validating original output
 
 ## Continuous Integration Pipeline
 
@@ -151,7 +336,7 @@ The `-A` flag ensures **all modified and new files** are staged for commit. With
 
 ### Pakkunbot Identity
 
-The `git -c include.path=~/.gitconfig-pakkunbot` flag uses a separate Git configuration file (`~/.gitconfig-pakkunbot`) containing the Pakkun Pakkun bot identity (email: blah+pakkun@cliffano.com). This avoids modifying the repository's git configuration and keeps commits attributed to the bot account rather than your personal account.
+The `git -c include.path=~/.gitconfig-pakkunbot` flag uses a separate Git configuration file (`~/.gitconfig-pakkunbot`) containing the Pakkun Pakkun bot identity (email: pakkunbot@users.noreply.github.com). This avoids modifying the repository's git configuration and keeps commits attributed to the bot account rather than your personal account.
 
 **Always include this flag for all git operations** (add, commit, push, pull):
 
