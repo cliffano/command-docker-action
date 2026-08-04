@@ -37,4 +37,5 @@ jobs:
         uses: ./
         with:
           command: 'mkdir -p /opt/workspace/bin/ && touch /opt/workspace/bin/some-exec && chmod +x /opt/workspace/bin/some-exec && which some-exec'
+          extra_args: '-v ~/.docker/config.json:/root/.docker/config.json:ro'
           extra_path: '/some/path:/opt/workspace/bin'

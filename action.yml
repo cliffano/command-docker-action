@@ -22,6 +22,11 @@ inputs:
       Shell to be used for running the command
     required: false
     default: sh
+  extra_args:
+    description: >
+      Extra Docker command args
+    required: false
+    default: ''
   extra_path:
     description: >
       Extra PATH environment variable to be added to original PATH during shell
@@ -55,7 +60,7 @@ runs:
         container_name="local_container_${unique_id}"
 
         docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v
-        .:/opt/workspace/ --name "$container_name" local_image:8.8.8 "${{
+        .:/opt/workspace/ ${{ inputs.extra_args }} --name "$container_name" local_image:8.8.8 "${{
         inputs.command }}" "${{ inputs.extra_path }}"
     - name: Run Docker container on the GitHub Workspace directory with env file
       if: inputs.env_file != ''
@@ -69,6 +74,6 @@ runs:
         container_name="local_container_${unique_id}"
 
         docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v
-        .:/opt/workspace/ --env-file "${{ inputs.env_file }}" --name
+        .:/opt/workspace/ --env-file "${{ inputs.env_file }}" ${{ inputs.extra_args }} --name
         "$container_name" local_image:8.8.8 "${{ inputs.command }}" "${{
         inputs.extra_path }}"

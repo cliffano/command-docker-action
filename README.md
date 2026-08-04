@@ -57,7 +57,7 @@ jobs:
           env_file: '/tmp/.env'
 ```
 
-Run command with extra PATH environment variable:
+Run command with extra PATH environment variable and extra Docker command args:
 
 ```yaml
 jobs:
@@ -67,6 +67,7 @@ jobs:
         uses: cliffano/command-docker-action@main
         with:
           command: 'mkdir -p /opt/workspace/bin/ && touch /opt/workspace/bin/some-exec && chmod +x /opt/workspace/bin/some-exec && which some-exec'
+          extra_args: '-v ~/.docker/config.json:/root/.docker/config.json:ro'
           extra_path: '/some/path:/opt/workspace/bin'
 ```
 
@@ -76,6 +77,7 @@ jobs:
 |-------|------|-------------|----------|---------|---------|
 | command | string | Shell command to be executed via a Docker container | Yes | - |  `cat /etc/*-release` |
 | image | string | Docker image to be used for running the container | No | `alpine:3.22` | `ubuntu:24.04` |
+| extra_args | string | Extra Docker command args | No | `` | `-v ~/.docker/config.json:/root/.docker/config.json:ro` |
 | extra_path | string | Extra PATH environment variable to be added to original PATH during shell command execution | No | `` | `/some/path:/opt/workspace/bin` |
 | shell | string | Shell to be used for running the command | No | `sh` | `sh`, `bash` |
 | env_file | string | Path to env file containing environment variables  made available during shell command execution | No | `` | `/tmp/.env` |
