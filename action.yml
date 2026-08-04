@@ -2,7 +2,7 @@
 name: Command Docker GitHub Action
 description: |
   A simple GitHub Action for running a shell command via a Docker container
-version: 2.0.1-pre.0
+version: 2.1.0
 author: Cliffano Subagio
 branding:
   icon: arrow-right-circle
@@ -23,7 +23,7 @@ inputs:
     required: false
     default: sh
   extra_args:
-    description: >
+    description: |
       Extra Docker command args
     required: false
     default: ''
@@ -60,8 +60,8 @@ runs:
         container_name="local_container_${unique_id}"
 
         docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v
-        .:/opt/workspace/ ${{ inputs.extra_args }} --name "$container_name" local_image:8.8.8 "${{
-        inputs.command }}" "${{ inputs.extra_path }}"
+        .:/opt/workspace/ ${{ inputs.extra_args }} --name "$container_name"
+        local_image:8.8.8 "${{ inputs.command }}" "${{ inputs.extra_path }}"
     - name: Run Docker container on the GitHub Workspace directory with env file
       if: inputs.env_file != ''
       shell: sh
@@ -74,6 +74,6 @@ runs:
         container_name="local_container_${unique_id}"
 
         docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v
-        .:/opt/workspace/ --env-file "${{ inputs.env_file }}" ${{ inputs.extra_args }} --name
-        "$container_name" local_image:8.8.8 "${{ inputs.command }}" "${{
-        inputs.extra_path }}"
+        .:/opt/workspace/ --env-file "${{ inputs.env_file }}" ${{
+        inputs.extra_args }} --name "$container_name" local_image:8.8.8 "${{
+        inputs.command }}" "${{ inputs.extra_path }}"
