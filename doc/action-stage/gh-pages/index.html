@@ -12,6 +12,7 @@
 | <code>command</code> | <p>Shell command to be executed via a Docker container</p> | <code>true</code> | <code>""</code> |
 | <code>image</code> | <p>Docker image to be used for running the container</p> | <code>false</code> | <code>alpine:3.24</code> |
 | <code>shell</code> | <p>Shell to be used for running the command</p> | <code>false</code> | <code>sh</code> |
+| <code>extra_args</code> | <p>Extra Docker command args</p> | <code>false</code> | <code>""</code> |
 | <code>extra_path</code> | <p>Extra PATH environment variable to be added to original PATH during shell command execution</p> | <code>false</code> | <code>""</code> |
 | <code>env_file</code> | <p>Path to env file containing environment variables made available during shell command execution</p> | <code>false</code> | <code>""</code> |</p>
 <h2>Runs</h2>
@@ -36,6 +37,12 @@ shell:
 #
 # Required: false
 # Default: sh
+
+extra_args:
+# Extra Docker command args
+#
+# Required: false
+# Default: ""
 
 extra_path:
 # Extra PATH environment variable to be added to original PATH during shell command execution
