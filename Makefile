@@ -4,8 +4,9 @@
 ################################################################
 
 # Actobat info
-ACTOBAT_VERSION = 1.2.0
+ACTOBAT_VERSION = 1.3.0
 
+UPDATE_GH_ID = cliffano
 UPDATE_MAKEFILE = actobat
 UPDATE_GENERATOR = github-action
 UPDATE_DOTFILES = .github/. .gitignore requirements.txt .rtk.json .yamllint AGENTS.md
@@ -121,7 +122,7 @@ endef
 define update_dotfiles_from_generator
 	cd stage/ && \
 	  rm -rf generator-$(1)/ && \
-	  git clone https://github.com/cliffano/generator-$(1) && \
+	  git clone https://github.com/$(UPDATE_GH_ID)/generator-$(1) && \
 	  cd generator-$(1) && \
 	  make deps && \
 	  node_modules/.bin/plop $(UPDATE_GENERATOR_COMPONENT) -- \
@@ -143,7 +144,7 @@ endef
 define update_partials_from_generator
 	cd stage/ && \
 	  rm -rf generator-$(1)/ && \
-	  git clone https://github.com/cliffano/generator-$(1) && \
+	  git clone https://github.com/$(UPDATE_GH_ID)/generator-$(1) && \
 	  cd generator-$(1) && \
 	  make deps && \
 	  node_modules/.bin/plop $(UPDATE_GENERATOR_COMPONENT)-partials -- \
@@ -180,27 +181,37 @@ $(1): UPDATE_GENERATOR_INPUTS_GITHUB_TOKEN_PREFIX = $$(shell yq .generator.input
 endef
 
 # Update Makefile to the latest version tag
-update-to-latest: UPDATE_TARGET_VERSION = $(shell curl -s https://api.github.com/repos/cliffano/$(UPDATE_MAKEFILE)/tags | jq -r '.[0].name')
+update-to-latest: UPDATE_TARGET_VERSION = $(shell curl -s https://api.github.com/repos/$(UPDATE_GH_ID)/$(UPDATE_MAKEFILE)/tags | jq -r '.[0].name')
 update-to-latest: update-to-version
 
 # Update Makefile to the main branch
 update-to-main:
-	curl https://raw.githubusercontent.com/cliffano/$(UPDATE_MAKEFILE)/main/src/Makefile-$(UPDATE_MAKEFILE) -o Makefile
+	curl https://raw.githubusercontent.com/$(UPDATE_GH_ID)/$(UPDATE_MAKEFILE)/main/src/Makefile-$(UPDATE_MAKEFILE) -o Makefile
 
 # Update Makefile to the version defined in UPDATE_TARGET_VERSION parameter
 update-to-version:
-	curl https://raw.githubusercontent.com/cliffano/$(UPDATE_MAKEFILE)/$(UPDATE_TARGET_VERSION)/src/Makefile-$(UPDATE_MAKEFILE) -o Makefile
+	curl https://raw.githubusercontent.com/$(UPDATE_GH_ID)/$(UPDATE_MAKEFILE)/$(UPDATE_TARGET_VERSION)/src/Makefile-$(UPDATE_MAKEFILE) -o Makefile
 
 # Update dotfiles using the generator
 $(eval $(call set_generator_vars,update-dotfiles,$(UPDATE_MAKEFILE)))
 update-dotfiles: stage
 	$(call update_dotfiles_from_generator,$(UPDATE_GENERATOR),$(UPDATE_DOTFILES))
+	$(call run_hook,x-post-update-dotfiles)
 
 # Update partial snippets using the generator
 $(eval $(call set_generator_vars,update-partials,$(UPDATE_MAKEFILE)))
 update-partials: stage
 	$(call update_partials_from_generator,$(UPDATE_GENERATOR),$(UPDATE_PARTIALS))
 
+release-major:
+	rtk release --release-increment-type major
+
+release-minor:
+	rtk release --release-increment-type minor
+
+release-patch:
+	rtk release --release-increment-type patch
+
 ################################################################
 
-.PHONY: $(1) all ci stage clean rmdeps deps deps-upgrade deps-extra-apt update-to-latest update-to-main update-to-version update-dotfiles update-partials lint test doc
+.PHONY: $(1) all ci stage clean rmdeps deps deps-upgrade deps-extra-apt lint test test-examples doc update-to-latest update-to-main update-to-version update-dotfiles update-partials release-major release-minor release-patch
