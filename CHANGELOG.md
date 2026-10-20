@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 ### Changed
-- Upgrade Actobat to 1.3.0
+- Upgrade Actobat to 1.5.0
 
 ## 2.1.0 - 2026-08-04
 ### Added

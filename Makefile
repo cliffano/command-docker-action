@@ -4,12 +4,12 @@
 ################################################################
 
 # Actobat info
-ACTOBAT_VERSION = 1.3.0
+ACTOBAT_VERSION = 1.5.0
 
 UPDATE_GH_ID = cliffano
 UPDATE_MAKEFILE = actobat
 UPDATE_GENERATOR = github-action
-UPDATE_DOTFILES = .github/. .gitignore requirements.txt .rtk.json .yamllint AGENTS.md
+UPDATE_DOTFILES = .github/. .gitignore .rtk.json .yamllint AGENTS.md
 UPDATE_PARTIALS = AVATAR BADGES BUILD_REPORTS DEVELOPERS_GUIDE
 
 ################################################################
